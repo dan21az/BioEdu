@@ -23,7 +23,7 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.dan21az.bioedu"
-            android:targetClass="com.dan21az.bioedu.vista.sostenibilidad.RegistroBioindicadoresActivity"/>
+            android:targetClass="com.dan21az.bioedu.vista.sostenibilidad.RegistroDialogSostenibilidad"/>
         <categories android:name="android.shortcut.conversation" />
     </shortcut>
 

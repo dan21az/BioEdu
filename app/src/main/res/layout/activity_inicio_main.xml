@@ -1,223 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginHorizontal="16dp"
-    android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_bienvenida"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Bienvenido"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/grid_opciones"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
-        app:columnCount="2"
-        app:rowCount="2"
-        app:layout_constraintTop_toBottomOf="@id/tv_bienvenida"
-        app:layout_constraintBottom_toTopOf="@id/linear_buttons"
-        app:layout_constraintVertical_weight="1"
-        >
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_actividades"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="8dp"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp"
-            app:strokeColor="?attr/colorPrimaryContainer"
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:src="@drawable/assignment_24px"
-                    app:tint="?attr/colorPrimary"
-                    android:contentDescription="Gestión de Actividades" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textSize="16sp"
-                    android:text="Gestión de Actividades"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_hidratacion"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="8dp"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp"
-            app:strokeColor="?attr/colorPrimaryContainer"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:contentDescription="Control de Hidratación"
-                    android:src="@drawable/water_full_24px"
-                    app:tint="?attr/colorPrimary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textSize="16sp"
-                    android:text="Control de Hidratación"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_sostenibilidad"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="8dp"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp"
-            app:strokeColor="?attr/colorPrimaryContainer"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:src="@drawable/eco_24px"
-                    app:tint="?attr/colorPrimary"
-                    android:contentDescription="Registro de Sostenibilidad" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textSize="16sp"
-                    android:text="Diario de Sostenibilidad"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_memoria"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="8dp"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp"
-            app:strokeColor="?attr/colorPrimaryContainer"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:src="@drawable/videogame_asset_24px"
-                    app:tint="?attr/colorPrimary"
-                    android:contentDescription="Juego de Memoria" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textSize="16sp"
-                    android:text="Juego de Memoria"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-    </androidx.gridlayout.widget.GridLayout>
-
-    <LinearLayout
-        android:id="@+id/linear_buttons"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp"
+        android:background="?attr/colorSurface"
+        app:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_ajustes"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_weight="1"
-            android:text="Ajustes"
-            android:layout_marginEnd="8dp"
-            app:icon="@drawable/settings_24px"
-            app:iconGravity="textStart"
-            />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_salir"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_weight="1"
-            android:text="Salir"
-            android:layout_marginStart="8dp"
-            android:backgroundTint="?attr/colorError"
-            android:textColor="?attr/colorOnError"
-            android:drawableStart="@drawable/exit_to_app_24px"
-            app:icon="@drawable/exit_to_app_24px"
-            app:iconTint="?attr/colorOnError"
-            app:iconGravity="textStart"
-            />
-
-    </LinearLayout>
-
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_registrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Añadir"
+        android:textColor="?attr/colorOnPrimaryContainer"
+        app:icon="@drawable/add_24px"
+        app:iconTint="?attr/colorOnPrimaryContainer"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:backgroundTint="?attr/colorPrimaryContainer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@ import com.dan21az.bioedu.datos.SostenibilidadDatos;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import java.util.ArrayList;
 
-public class RegistroBioindicadoresActivity extends AppCompatActivity {
+public class RegistroDialogSostenibilidad extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

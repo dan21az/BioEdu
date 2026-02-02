@@ -58,14 +58,6 @@ public class MainSostenibilidadActivity extends AppCompatActivity {
                 actualizarCardInspiracional());
 
         // Configuración de botones
-        findViewById(R.id.btnRegistrar).setOnClickListener(v -> {
-            RegistroAccionesSheet sheet = new RegistroAccionesSheet();
-
-            // Al cerrar el sheet, refrescamos el Dashboard
-            sheet.setOnDismissListener(this::cargarResumen);
-
-            sheet.show(getSupportFragmentManager(), "RegistroAccionesSheet");
-        });
 
         findViewById(R.id.btn_share_sostenibilidad).setOnClickListener(v ->
                 prepararYCompartirRacha());

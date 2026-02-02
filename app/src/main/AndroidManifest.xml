@@ -93,7 +93,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".vista.sostenibilidad.RegistroBioindicadoresActivity"
+            android:name=".vista.sostenibilidad.RegistroDialogSostenibilidad"
             android:theme="@style/Theme.Material3.DayNight.Dialog"
             android:excludeFromRecents="true"
             android:exported="true"

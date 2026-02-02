@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_agenda"
+        android:icon="@drawable/assignment_24px"
+        android:title="Agenda" />
+    <item
+        android:id="@+id/nav_hidratacion"
+        android:icon="@drawable/water_full_24px"
+        android:title="Agua" />
+    <item
+        android:id="@+id/nav_huella"
+        android:icon="@drawable/eco_24px"
+        android:title="Mi Huella" />
+    <item
+        android:id="@+id/nav_juego"
+        android:icon="@drawable/videogame_asset_24px"
+        android:title="Juego" />
+    <item
+        android:id="@+id/nav_ajustes"
+        android:icon="@drawable/settings_24px"
+        android:title="Ajustes" />
+</menu>

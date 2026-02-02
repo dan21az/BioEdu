@@ -1,5 +1,6 @@
 package com.dan21az.bioedu.vista.sostenibilidad;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -60,6 +62,16 @@ public class RegistroAccionesSheet extends BottomSheetDialogFragment {
         });
 
         return v;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        View bottomSheet = (View) view.getParent();
+        bottomSheet.setBackgroundTintList(ColorStateList.valueOf(
+                ContextCompat.getColor(requireContext(), R.color.md_theme_surfaceContainerLow)
+        ));
     }
 
     // --- ADAPTER INTERNO (Elimina la necesidad de un archivo aparte) ---
