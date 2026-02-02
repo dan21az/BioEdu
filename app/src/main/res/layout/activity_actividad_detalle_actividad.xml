@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".vista.actividad.DetalleActividad">
+
+    <!-- TÍTULO -->
+    <TextView
+        android:id="@+id/tv_detalle_titulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Detalle de la actividad (ID X)"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- SCROLL -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_detalle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/tv_detalle_titulo"
+        app:layout_constraintBottom_toTopOf="@id/layout_acciones"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- CARD INFO GENERAL -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:layout_marginVertical="8dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp"
+                android:backgroundTint="?attr/colorSurfaceContainer">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Información General"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:id="@+id/container_info_general"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:text="Nombre: "
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/detalle_tv_nombre"
+                            android:textAppearance="?attr/textAppearanceBodyLargeEmphasized"
+                            android:paddingTop="4dp" />
+                        <TextView
+                            android:text="Tipo: "
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/detalle_tv_tipo"/>
+                        <TextView
+                            android:text="Asignatura: "
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/detalle_tv_asignatura"
+                            android:visibility="gone"/>
+                        <TextView
+                            android:text="Prioridad: "
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/detalle_tv_prioridad"/>
+                        <TextView
+                            android:text="Estado: "
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/detalle_tv_estado"/>
+                        <TextView
+                            android:text="Fecha Límite: "
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/detalle_tv_fecha_limite"/>
+                        <TextView
+                            android:text="Tiempo Estimado: "
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/detalle_tv_tiempo_estimado"/>
+                        <TextView
+                            android:text="Avance Actual: "
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/detalle_tv_avance_actual"/>
+                        <TextView
+                            android:text="Lugar: "
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/detalle_tv_lugar"
+                            android:visibility="gone"/>
+                        <TextView
+                            android:text="Descripción: "
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/detalle_tv_descripcion"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- CARD HISTORIAL -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_historial_tiempo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:layout_marginVertical="8dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp"
+                android:backgroundTint="?attr/colorSurfaceContainer">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Historial de Gestión del Tiempo"
+                        android:textStyle="bold"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="4dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.2"
+                            android:gravity="center"
+                            android:text="Fecha"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:gravity="center"
+                            android:text="Técnica"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Duración"/>
+                    </LinearLayout>
+
+                    <!-- CLAVE -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view_historial_tiempo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        android:overScrollMode="never"
+                        tools:listitem="@layout/item_sesion_historial"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- BOTÓN -->
+    <LinearLayout
+        android:id="@+id/layout_acciones"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btn_volver_listado"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Volver"
+            app:icon="@drawable/arrow_back_24px"
+            app:iconGravity="textStart" />
+
+        <Button
+            android:id="@+id/btn_editar_actividad"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Editar"
+            app:iconGravity="textStart"
+            app:icon="@drawable/edit_24px" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

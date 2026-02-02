@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:shortcutId="ingresar_actividad"
+        android:enabled="true"
+        android:icon="@drawable/assignment_add_24px"
+        android:shortcutShortLabel="@string/shortcut_actividad_short"
+        android:shortcutLongLabel="@string/shortcut_actividad_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.dan21az.bioedu"
+            android:targetClass="com.dan21az.bioedu.vista.actividad.IngresarActividad" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="registro_sostenible"
+        android:enabled="true"
+        android:icon="@drawable/reciclaje_24px"
+        android:shortcutShortLabel="@string/shortcut_sostenibilidad_short"
+        android:shortcutLongLabel="@string/shortcut_sostenibilidad_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.dan21az.bioedu"
+            android:targetClass="com.dan21az.bioedu.vista.sostenibilidad.RegistroBioindicadoresActivity"/>
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+</shortcuts>

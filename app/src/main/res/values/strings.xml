@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BioEdu</string>
+    <string name="shortcut_actividad_short">Añadir Tarea</string>
+    <string name="shortcut_actividad_long">Ingresar nueva Actividad</string>
+    <string name="shortcut_sostenibilidad_short">Registrar Bio</string>
+    <string name="shortcut_sostenibilidad_long">Registrar Bioindicadores de Hoy</string>
+
+</resources>
