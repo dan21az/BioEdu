@@ -8,6 +8,12 @@
         <item name="android:windowAnimationStyle">@style/AnimacionPersonalizada</item>
     </style>
 
+    <style name="DialogSinCorte" parent="Theme.MaterialComponents.DayNight.Dialog.Alert">
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:windowMinWidthMajor">90%</item>
+    </style>
+
     <style name="AnimacionPersonalizada" parent="@android:style/Animation.Activity">
 
         <item name="android:activityCloseExitAnimation">@android:anim/slide_out_right</item>

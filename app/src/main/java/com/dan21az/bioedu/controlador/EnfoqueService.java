@@ -170,7 +170,11 @@ public class EnfoqueService extends Service {
     private void detenerTemp() {
         if (temporizador != null) temporizador.cancel();
         estadoActual = Estado.DETENIDO;
-        stopForeground(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            stopForeground(STOP_FOREGROUND_REMOVE);
+        } else {
+            stopForeground(true);
+        }
         sendUpdateBroadcast();
     }
 
@@ -420,10 +424,12 @@ public class EnfoqueService extends Service {
         }
 
         //Usar el vibrador según la versión de android
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            v.vibrate(VibrationEffect.createWaveform(new long[]{0, 500, 200, 500}, -1));
-        } else {
-            v.vibrate(new long[]{0, 500, 200, 500}, -1);
+        if (v != null && v.hasVibrator()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                v.vibrate(VibrationEffect.createWaveform(new long[]{0, 500, 200, 500}, -1));
+            } else {
+                v.vibrate(new long[]{0, 500, 200, 500}, -1);
+            }
         }
     }
 

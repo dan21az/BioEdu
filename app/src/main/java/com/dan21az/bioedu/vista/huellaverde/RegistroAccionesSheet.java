@@ -1,4 +1,4 @@
-package com.dan21az.bioedu.vista.sostenibilidad;
+package com.dan21az.bioedu.vista.huellaverde;
 
 import android.content.res.ColorStateList;
 import android.os.Bundle;
@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dan21az.bioedu.R;
-import com.dan21az.bioedu.controlador.SostenibilidadControladora;
-import com.dan21az.bioedu.datos.SostenibilidadDatos;
+import com.dan21az.bioedu.controlador.HuellaVerdeControladora;
+import com.dan21az.bioedu.datos.HuellaVerdeDatos;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
 
@@ -22,8 +22,8 @@ import java.util.ArrayList;
 
 public class RegistroAccionesSheet extends BottomSheetDialogFragment {
 
-    private SostenibilidadControladora controladora;
-    private InternalAccionesAdapter adapter; // Ahora usa la clase interna
+    private HuellaVerdeControladora controladora;
+    private InternalAccionesAdapter adapter;
     private Runnable onDismissListener;
 
     public void setOnDismissListener(Runnable listener) {
@@ -33,9 +33,9 @@ public class RegistroAccionesSheet extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.sheet_registro_acciones, container, false);
+        View v = inflater.inflate(R.layout.huellaverde_sheet_registro_acciones, container, false);
 
-        controladora = SostenibilidadControladora.getInstance();
+        controladora = HuellaVerdeControladora.getInstance();
         RecyclerView rv = v.findViewById(R.id.rvAccionesRegistro);
         MaterialButton btnGuardar = v.findViewById(R.id.btnGuardarRegistro);
 
@@ -46,7 +46,7 @@ public class RegistroAccionesSheet extends BottomSheetDialogFragment {
         String hoyTecnico = controladora.obtenerFechaActual();
 
         if (getContext() != null) {
-            ArrayList<String> guardadasHoy = SostenibilidadDatos.getInstance(getContext()).cargarAcciones(hoyTecnico);
+            ArrayList<String> guardadasHoy = HuellaVerdeDatos.getInstance(getContext()).cargarAcciones(hoyTecnico);
             if (!guardadasHoy.isEmpty()) {
                 adapter.setSeleccionadas(guardadasHoy);
             }
@@ -55,8 +55,12 @@ public class RegistroAccionesSheet extends BottomSheetDialogFragment {
         btnGuardar.setOnClickListener(view -> {
             ArrayList<String> seleccionadas = adapter.getAccionesSeleccionadas();
             if (getContext() != null) {
-                SostenibilidadDatos.getInstance(getContext()).guardarAcciones(hoyTecnico, seleccionadas, getContext());
-                if (onDismissListener != null) onDismissListener.run();
+                controladora.guardarAccionesActuales(getContext(), hoyTecnico, seleccionadas);
+
+                // Importante: Ejecutar el refresco antes de cerrar
+                if (onDismissListener != null) {
+                    onDismissListener.run();
+                }
                 dismiss();
             }
         });
@@ -87,7 +91,7 @@ public class RegistroAccionesSheet extends BottomSheetDialogFragment {
         @NonNull
         @Override
         public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_sostenibilidad_accion_checkbox, parent, false);
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.huellaverde_item_accion_checkbox, parent, false);
             return new VH(v);
         }
 

@@ -1,123 +1,102 @@
 package com.dan21az.bioedu;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.view.View;
-
+import android.widget.ImageButton;
+import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.dan21az.bioedu.vista.sostenibilidad.SostenibilidadFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.dan21az.bioedu.datos.MenuDatos;
+import com.dan21az.bioedu.vista.hidratacion.HidratacionMenu;
+import com.dan21az.bioedu.vista.huellaverde.MainHuellaVerde;
+
+import com.dan21az.bioedu.vista.actividad.ListaActividades;
+import com.dan21az.bioedu.vista.juegomemoria.JuegoMemoria;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.card.MaterialCardView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private BottomNavigationView bottomNav;
-    private ExtendedFloatingActionButton fabRegistrar;
-    private Fragment activo;
+    private TextView tvResumenPuntos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_inicio_main);
+        MaterialToolbar toolbar = findViewById(R.id.topAppBar);
+        setSupportActionBar(toolbar);
 
-        bottomNav = findViewById(R.id.bottom_navigation);
-        fabRegistrar = findViewById(R.id.fab_registrar);
+        tvResumenPuntos = findViewById(R.id.tvResumenSosteniblidad);
+        MaterialCardView cardActividades = findViewById(R.id.cardActividades);
+        MaterialCardView cardSostenibilidad = findViewById(R.id.cardSostenibilidad);
+        MaterialCardView cardHidratacion = findViewById(R.id.cardHidratacion);
+        MaterialCardView cardJuego = findViewById(R.id.cardJuego);
+        ImageButton ajustes = findViewById(R.id.btnSettings);
 
-        if (savedInstanceState == null) {
-            getWindow().getDecorView().post(() -> {
-                // Usamos el nuevo método optimizado
-                cambiarFragmento(new SostenibilidadFragment(), "HUELLA");
-            });
-        }
+        // Listeners: Abrir la actividad de detalle
 
-        bottomNav.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
+        cardActividades.setOnClickListener(v -> {
+            v.setEnabled(false);
+            Intent intent = new Intent(MainActivity.this, ListaActividades.class);
+            startActivity(intent);
 
-            if (id == R.id.nav_huella) {
-                cambiarFragmento(new SostenibilidadFragment(), "HUELLA");
-                return true;
-            } else if (id == R.id.nav_hidratacion) {
-                // cambiarFragmento(new HidratacionFragment(), "HIDRATACION");
-                return true;
-            } else if (id == R.id.nav_agenda) {
-                // cambiarFragmento(new AgendaFragment(), "AGENDA");
-                return true;
-            } else if (id == R.id.nav_ajustes) {
-                // Ajustes no es un fragmento, es otra Activity
-                startActivity(new Intent(this, AjustesActivity.class));
-                return false;
-            }
-            return false;
+            // Rehabilitamos después de un segundo
+            v.postDelayed(() -> v.setEnabled(true), 1000);
         });
 
-        bottomNav.setOnItemReselectedListener(item -> {
-            // Opcional: scroll to top si el usuario vuelve a presionar
+        cardSostenibilidad.setOnClickListener(v -> {
+            v.setEnabled(false);
+            Intent intent = new Intent(MainActivity.this, MainHuellaVerde.class);
+            startActivity(intent);
+
+            // Rehabilitamos después de un segundo
+            v.postDelayed(() -> v.setEnabled(true), 1000);
         });
+
+        cardHidratacion.setOnClickListener(v -> {
+            v.setEnabled(false);
+            Intent intent = new Intent(MainActivity.this, HidratacionMenu.class);
+            startActivity(intent);
+
+            // Rehabilitamos después de un segundo
+            v.postDelayed(() -> v.setEnabled(true), 1000);
+        });
+        cardJuego.setOnClickListener(v -> {
+            v.setEnabled(false);
+            Intent intent = new Intent(MainActivity.this, JuegoMemoria.class);
+            startActivity(intent);
+
+            // Rehabilitamos después de un segundo
+            v.postDelayed(() -> v.setEnabled(true), 1000);
+        });
+
+        ajustes.setOnClickListener(v -> {
+            v.setEnabled(false);
+            Intent intent = new Intent(MainActivity.this, AjustesActivity.class);
+            startActivity(intent);
+
+            // Rehabilitamos después de un segundo
+            v.postDelayed(() -> v.setEnabled(true), 1000);
+        });
+
+
+        actualizarResumenDashboard();
     }
 
-    // MÉTODO OPTIMIZADO: Lazy Loading + Show/Hide
-    private void cambiarFragmento(Fragment fragmentoNuevo, String tag) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-        // Animación suave para que no sea brusco el cambio
-        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-
-        Fragment temp = getSupportFragmentManager().findFragmentByTag(tag);
-
-        if (activo != null) {
-            transaction.hide(activo);
-        }
-
-        if (temp == null) {
-            transaction.add(R.id.nav_host_fragment, fragmentoNuevo, tag);
-            activo = fragmentoNuevo;
-        } else {
-            transaction.show(temp);
-            activo = temp;
-        }
-
-        transaction.commit();
+        actualizarResumenDashboard();
     }
 
-    public void configurarFAB(String texto, int iconoRes, int colorFondo, int colorContenido, View.OnClickListener accion) {
-        // Si mandamos texto nulo, escondemos el FAB (útil para secciones sin acción)
-        if (texto == null) {
-            fabRegistrar.hide();
-            return;
-        }
+    private void actualizarResumenDashboard() {
 
-        fabRegistrar.setText(texto);
-        fabRegistrar.setIconResource(iconoRes);
-        fabRegistrar.setBackgroundTintList(ColorStateList.valueOf(colorFondo));
-        fabRegistrar.setIconTint(ColorStateList.valueOf(colorContenido));
-        fabRegistrar.setTextColor(ColorStateList.valueOf(colorContenido));
-        fabRegistrar.setOnClickListener(accion);
+        int puntos = MenuDatos.obtenerPuntosCache(this);
 
-        fabRegistrar.show();
-        if (!fabRegistrar.isShown()) {
-            fabRegistrar.show();
-        }
+        tvResumenPuntos.setText(puntos + " / 28 pts");
     }
 
-    public void actualizarEstiloBarra(int colorFondo, int colorPildora, int colorIconoActivo, int colorIconoInactivo) {
-        bottomNav.setBackgroundColor(colorFondo);
-        bottomNav.setItemActiveIndicatorColor(ColorStateList.valueOf(colorPildora));
-
-        int[][] estados = new int[][]{
-                new int[]{android.R.attr.state_checked},
-                new int[]{-android.R.attr.state_checked}
-        };
-        int[] colores = new int[]{colorIconoActivo, colorIconoInactivo};
-        ColorStateList listaColores = new ColorStateList(estados, colores);
-
-        bottomNav.setItemIconTintList(listaColores);
-        bottomNav.setItemTextColor(listaColores);
-    }
 }

@@ -1,20 +1,18 @@
-package com.dan21az.bioedu.modelo.sostenibilidad;
+package com.dan21az.bioedu.modelo.huellaverde;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class RegistroSostenible implements Serializable {
-    private static final long serialVersionUID = 1L;
-
-    private String fechaIso; // yyyy-MM-dd
+    private String fecha; // yyyy-MM-dd
     private ArrayList<String> acciones;
 
-    public RegistroSostenible(String fechaIso) {
-        this.fechaIso = fechaIso;
+    public RegistroSostenible(String fecha) {
+        this.fecha = fecha;
         this.acciones = new ArrayList<>();
     }
 
-    public String getFechaIso() { return fechaIso; }
+    public String getFecha() { return fecha; }
 
     public ArrayList<String> getAcciones() { return acciones; }
 

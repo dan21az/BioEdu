@@ -1,29 +1,30 @@
-package com.dan21az.bioedu.vista.sostenibilidad;
+package com.dan21az.bioedu.vista.huellaverde;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import com.dan21az.bioedu.controlador.SostenibilidadControladora;
-import com.dan21az.bioedu.datos.SostenibilidadDatos;
+
+import com.dan21az.bioedu.controlador.HuellaVerdeControladora;
+import com.dan21az.bioedu.datos.HuellaVerdeDatos;
+
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import java.util.ArrayList;
 
-public class RegistroDialogSostenibilidad extends AppCompatActivity {
+public class RegistroAccionesDialog extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // No usamos setContentView para que sea ultra rápida e invisible
         mostrarDialogo();
     }
 
     private void mostrarDialogo() {
-        SostenibilidadControladora ctrl = SostenibilidadControladora.getInstance();
+        HuellaVerdeControladora ctrl = HuellaVerdeControladora.getInstance();
         String hoy = ctrl.obtenerFechaActual();
         ArrayList<String> opciones = ctrl.getAccionesDisponibles();
         String[] items = opciones.toArray(new String[0]);
 
         // Cargar estado previo
-        ArrayList<String> guardadas = SostenibilidadDatos.getInstance(this).cargarAcciones(hoy);
+        ArrayList<String> guardadas = HuellaVerdeDatos.getInstance(this).cargarAcciones(hoy);
         boolean[] checkedItems = new boolean[items.length];
         ArrayList<String> seleccionActual = new ArrayList<>(guardadas);
 
@@ -38,7 +39,7 @@ public class RegistroDialogSostenibilidad extends AppCompatActivity {
                     else seleccionActual.remove(items[which]);
                 })
                 .setPositiveButton("Guardar", (dialog, which) -> {
-                    SostenibilidadDatos.getInstance(this).guardarAcciones(hoy, seleccionActual, this);
+                    ctrl.guardarAccionesActuales(this, hoy, seleccionActual);
                     terminar();
                 })
                 .setNegativeButton("Cancelar", (dialog, which) -> terminar())
@@ -48,7 +49,6 @@ public class RegistroDialogSostenibilidad extends AppCompatActivity {
 
     private void terminar() {
         finish();
-        // Evita animaciones bruscas al cerrar
         overridePendingTransition(0, 0);
     }
 }

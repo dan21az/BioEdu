@@ -2,6 +2,7 @@ package com.dan21az.bioedu.vista.juegomemoria;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -79,14 +80,11 @@ public class JuegoMemoria extends AppCompatActivity {
             adapter.notifyItemRangeChanged(0, 16);
 
             // Ocultarlas después de 1.5 segundos
-            new Handler().postDelayed(() -> {
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 for (int i = 0; i < 16; i++) {
                     juego.getTablero().getCarta(i).ocultar();
                 }
-                // Notificamos el cambio para que vuelvan a girar/deslizarse a "?"
                 adapter.notifyItemRangeChanged(0, 16);
-
-                // Desbloqueamos el juego para el usuario
                 bloqueado = false;
             }, 1500);
         });
@@ -120,7 +118,7 @@ public class JuegoMemoria extends AppCompatActivity {
 
             if (primeraCarta.getImagenId() != segundaCarta.getImagenId()) {
                 // NO coinciden: Esperar 1 segundo y ocultar
-                new Handler().postDelayed(() -> {
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
                     primeraCarta.ocultar();
                     segundaCarta.ocultar();
                     adapter.notifyItemChanged(primeraSeleccion);

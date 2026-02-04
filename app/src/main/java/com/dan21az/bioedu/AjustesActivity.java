@@ -2,6 +2,9 @@ package com.dan21az.bioedu;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
@@ -119,28 +122,28 @@ public class AjustesActivity extends AppCompatActivity {
     }
 
     private void mostrarDialogoAcercaDe(Context context) {
-        // Definimos el enlace de GitHub aquí (¡Asegúrate de reemplazar con tu URL real!)
-        String githubUrl = "https://github.com/dan21az/POO-P01-G06";
+        String githubUrl = "https://github.com/dan21az/BioEdu";
 
         // Crear el mensaje usando HTML para los enlaces
         StringBuilder message = new StringBuilder();
-        message.append("Versión: 1.0<br>");
-        message.append("Desarrollado como proyecto de gestión de enfoque y productividad para la asignatura de POO ESPOL PAO II 2025.<br><br>");
+        String version = getAppVersion(this);
+        message.append(String.format("Versión: %s<br>",version));
+        message.append("Desarrollado como proyecto personal de un Estudiante de ESPOl para aprender sobre el desarrollo y diseños de aplicaciones Android.<br><br>");
         message.append("<b>🚀 Desarrollado por:</b><br>");
-        message.append("- Aguilar Vélez Henry Ariel<br>");
         message.append("- Anzules García Daniel Isaías<br>");
-        message.append("- García Onofre Klever Javier<br>");
-        message.append("- Murillo Castro Allan Marcelo<br><br>");
 
         // --- Sección de enlaces ---
 
         // Enlace de Atribución de Iconografía
         String flaticonUrl = "https://www.flaticon.es/autores/ra-ic0n21/detailed-outline?author_id=3187&type=standard";
+        String nounUrl = "https://thenounproject.com/creator/yoganagbali/";
         message.append("<b>🖼️ Atribución de Iconografía:</b><br>");
         message.append("Icono principal cortesía de <a href=\"")
                 .append(flaticonUrl)
                 .append("\">RA_IC0N21</a> (Flaticon).<br><br>");
-
+        message.append("Icono de Huella Verde cortesía de <a href=\"")
+                .append(nounUrl)
+                .append("\">Gung Yoga</a> (The Noun Proyect).<br><br>");
         // Nuevo Enlace al Código Fuente de GitHub
         message.append("<b>🔗 Código Fuente:</b><br>");
         message.append("Consulta el código fuente completo en <a href=\"")
@@ -168,6 +171,27 @@ public class AjustesActivity extends AppCompatActivity {
         if (messageTextView != null) {
             // Habilitar que las etiquetas <a> de HTML sean clicables
             messageTextView.setMovementMethod(LinkMovementMethod.getInstance());
+        }
+    }
+
+    public static String getAppVersion(Context context) {
+        try {
+            PackageManager manager = context.getPackageManager();
+            String packageName = context.getPackageName();
+            PackageInfo info;
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                // Para Android 13 (API 33) en adelante
+                info = manager.getPackageInfo(packageName, PackageManager.PackageInfoFlags.of(0));
+            } else {
+                // Para versiones anteriores
+                info = manager.getPackageInfo(packageName, 0);
+            }
+
+            return info.versionName; // Ejemplo: "1.0.4"
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return "Versión no disponible";
         }
     }
 }
