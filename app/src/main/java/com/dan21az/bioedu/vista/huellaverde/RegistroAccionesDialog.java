@@ -33,13 +33,14 @@ public class RegistroAccionesDialog extends AppCompatActivity {
         }
 
         new MaterialAlertDialogBuilder(this)
-                .setTitle("Bioindicadores de Hoy")
+                .setTitle("EcoAcciones de Hoy")
                 .setMultiChoiceItems(items, checkedItems, (dialog, which, isChecked) -> {
                     if (isChecked) seleccionActual.add(items[which]);
                     else seleccionActual.remove(items[which]);
                 })
                 .setPositiveButton("Guardar", (dialog, which) -> {
                     ctrl.guardarAccionesActuales(this, hoy, seleccionActual);
+
                     terminar();
                 })
                 .setNegativeButton("Cancelar", (dialog, which) -> terminar())

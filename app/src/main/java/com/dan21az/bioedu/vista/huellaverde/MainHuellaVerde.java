@@ -36,12 +36,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MainHuellaVerde extends AppCompatActivity {
 
     private HuellaVerdeControladora controladora;
-    private final java.util.concurrent.ExecutorService executorService =
-            java.util.concurrent.Executors.newSingleThreadExecutor();
+    private final ExecutorService executorService = Executors.newSingleThreadExecutor();
     private LinearLayout containerAcciones;
     private TextView tvDiasConAccion, tvDiasCompletos, tvRangoFechas;
     private TextView tvLogroGeneral,tvMensajeInspiracional,tvAccionesSemanal;
@@ -59,7 +60,6 @@ public class MainHuellaVerde extends AppCompatActivity {
         controladora = HuellaVerdeControladora.getInstance();
 
         iniciarVistas();
-        configurarSistemaEdgeToEdge();
         animacionesLayouts();
         configurarListeners();
     }
@@ -68,13 +68,19 @@ public class MainHuellaVerde extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         cargarResumenAsincrono();
-
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Apaga el hilo para evitar fugas de memoria (Memory Leaks)
+        if (!executorService.isShutdown()) {
+            executorService.shutdownNow();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
         if (!executorService.isShutdown()) {
             executorService.shutdownNow();
         }
@@ -100,14 +106,6 @@ public class MainHuellaVerde extends AppCompatActivity {
         colorBioIcon = MaterialColors.getColor(this,
                 com.google.android.material.R.attr.colorOnSurfaceVariant,
                 android.graphics.Color.GRAY);
-
-
-    }
-
-    private void configurarSistemaEdgeToEdge() {
-
-
-
 
 
     }
@@ -178,7 +176,7 @@ public class MainHuellaVerde extends AppCompatActivity {
 
         // Actualizar los Bioindicadores
         containerAcciones = findViewById(R.id.containerAcciones);
-        bioIndicadores(resumen.acciones);
+        EcoAcciones(resumen.acciones);
 
         // Actualizar texto de Carta Inspiracional
         tvMensajeInspiracional.setText(resumen.tipDelDia.mensaje);
@@ -194,31 +192,31 @@ public class MainHuellaVerde extends AppCompatActivity {
 
     }
 
-    //Generar los BioIndicadores
-    private void bioIndicadores(List<HuellaVerdeControladora.AccionResumen> acciones) {
+    //Generar las EcoAcciones
+    private void EcoAcciones(List<HuellaVerdeControladora.AccionResumen> acciones) {
         if (acciones == null) return;
 
         // Si ya hay vistas, solo actualiza valores sin recrear la interfaz
         if (containerAcciones.getChildCount() > 0) {
             for (int i = 0; i < acciones.size(); i++) {
                 if (i < containerAcciones.getChildCount()) {
-                    actualizarVistaIndicador(containerAcciones.getChildAt(i), acciones.get(i));
+                    actualizarVistaAcciones(containerAcciones.getChildAt(i), acciones.get(i));
                 }
             }
 
         } else { //Caso Contrario inflo los indicadores inflando el layout
         for (HuellaVerdeControladora.AccionResumen item : acciones) {
             View v = getLayoutInflater().inflate(R.layout.huellaverde_item_bioindicador, containerAcciones, false);
-            actualizarVistaIndicador(v, item);
+            actualizarVistaAcciones(v, item);
             v.setAlpha(0f);
             v.setTranslationY(30f);
             containerAcciones.addView(v);
         }
-        animacionBioIndicadores();}
+        animacionEcoAcciones();}
     }
 
-    //Actualizar la interfaz de Bioindicadores
-    private void actualizarVistaIndicador(View v, HuellaVerdeControladora.AccionResumen item) {
+    //Actualizar la interfaz de EcoAcciones
+    private void actualizarVistaAcciones(View v, HuellaVerdeControladora.AccionResumen item) {
 
         ((TextView) v.findViewById(R.id.tvAccion)).setText(item.titulo);
         ((TextView) v.findViewById(R.id.tvVeces)).setText(item.actual + "/7");
@@ -253,8 +251,8 @@ public class MainHuellaVerde extends AppCompatActivity {
         }
     }
 
-    //Animación de entrada de los bioindicadres
-    private void animacionBioIndicadores() {
+    //Animación de entrada de las EcoAcciones
+    private void animacionEcoAcciones() {
         containerAcciones.setLayoutTransition(null);
         containerAcciones.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override

@@ -71,8 +71,8 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginHorizontal="24dp"
                 app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
                 app:strokeWidth="0dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
@@ -81,10 +81,43 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp">
-                    <ImageView android:id="@+id/ivActividadIcon" android:layout_width="56dp" android:layout_height="56dp" android:padding="12dp" android:src="@drawable/assignment_24px" app:tint="?attr/colorPrimary" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" />
-                    <TextView android:id="@+id/tvTituloActividad" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="Actividades" android:textSize="18sp" android:textStyle="bold" app:layout_constraintStart_toEndOf="@id/ivActividadIcon" app:layout_constraintTop_toTopOf="parent" />
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:alpha="0.7" android:text="3 rutinas completadas hoy" app:layout_constraintStart_toStartOf="@id/tvTituloActividad" app:layout_constraintTop_toBottomOf="@id/tvTituloActividad" />
-                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/chevron_right_24px" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" />
+                    <ImageView
+                        android:id="@+id/ivActividadIcon"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:padding="12dp"
+                        android:src="@drawable/assignment_24px"
+                        app:tint="?attr/colorPrimary"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvTituloActividad"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Actividades"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/ivActividadIcon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:text="Test"
+                        app:layout_constraintStart_toStartOf="@id/tvTituloActividad"
+                        app:layout_constraintTop_toBottomOf="@id/tvTituloActividad" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/chevron_right_24px"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -95,8 +128,8 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginHorizontal="24dp"
                 app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
                 app:strokeWidth="0dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
                 app:layout_constraintTop_toBottomOf="@id/cardActividades"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
@@ -104,22 +137,56 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp">
-                    <ImageView android:id="@+id/ivWaterIcon" android:layout_width="56dp" android:layout_height="56dp" android:padding="12dp" android:src="@drawable/water_full_24px" app:tint="#2196F3" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" />
-                    <TextView android:id="@+id/tvTituloHidratacion" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="Hidratación" android:textSize="18sp" android:textStyle="bold" app:layout_constraintStart_toEndOf="@id/ivWaterIcon" app:layout_constraintTop_toTopOf="parent" />
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:alpha="0.7" android:text="1.5L de 2.0L alcanzados" app:layout_constraintStart_toStartOf="@id/tvTituloHidratacion" app:layout_constraintTop_toBottomOf="@id/tvTituloHidratacion" />
-                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/chevron_right_24px" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" />
+                    <ImageView
+                        android:id="@+id/ivWaterIcon"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:padding="12dp"
+                        android:src="@drawable/water_full_24px"
+                        app:tint="?attr/colorPrimary"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvTituloHidratacion"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Hidratación"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/ivWaterIcon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:text="Test"
+                        app:layout_constraintStart_toStartOf="@id/tvTituloHidratacion"
+                        app:layout_constraintTop_toBottomOf="@id/tvTituloHidratacion" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/chevron_right_24px"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardSostenibilidad"
+                android:id="@+id/cardHuellaVerde"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginHorizontal="24dp"
                 app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
                 app:strokeWidth="0dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
                 app:layout_constraintTop_toBottomOf="@id/cardHidratacion"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
@@ -127,10 +194,45 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp">
-                    <ImageView android:id="@+id/ivEcoIcon" android:layout_width="56dp" android:layout_height="56dp" android:padding="12dp" android:src="@drawable/eco_24px" app:tint="?attr/colorPrimary" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" />
-                    <TextView android:id="@+id/tvTituloSostenibilidad" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="Sostenibilidad" android:textSize="18sp" android:textStyle="bold" app:layout_constraintStart_toEndOf="@id/ivEcoIcon" app:layout_constraintTop_toTopOf="parent" />
-                    <TextView android:id="@+id/tvResumenSosteniblidad" android:layout_width="0dp" android:layout_height="wrap_content" android:alpha="0.7" android:text="15/28 puntos esta semana" app:layout_constraintStart_toStartOf="@id/tvTituloSostenibilidad" app:layout_constraintTop_toBottomOf="@id/tvTituloSostenibilidad" />
-                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/chevron_right_24px" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivEcoIcon"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:padding="12dp"
+                        android:src="@drawable/eco_24px"
+                        app:tint="?attr/colorPrimary"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvTituloHuellaVerde"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Huella Verde"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/ivEcoIcon"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/tvResumenSosteniblidad"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:text="15/28 puntos esta semana"
+                        app:layout_constraintStart_toStartOf="@id/tvTituloHuellaVerde"
+                        app:layout_constraintTop_toBottomOf="@id/tvTituloHuellaVerde" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/chevron_right_24px"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -141,19 +243,49 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginHorizontal="24dp"
                 app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
                 app:strokeWidth="0dp"
-                app:layout_constraintTop_toBottomOf="@id/cardSostenibilidad"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:layout_constraintTop_toBottomOf="@id/cardHuellaVerde"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp">
-                    <ImageView android:id="@+id/ivGameIcon" android:layout_width="56dp" android:layout_height="56dp" android:padding="12dp" android:src="@drawable/videogame_asset_24px" app:tint="#FF9800" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" />
-                    <TextView android:id="@+id/tvTituloJuego" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="Mini-Juego" android:textSize="18sp" android:textStyle="bold" app:layout_constraintStart_toEndOf="@id/ivGameIcon" app:layout_constraintTop_toTopOf="parent" />
-                    <TextView android:id="@+id/tvResumenPuntos" android:layout_width="0dp" android:layout_height="wrap_content" android:alpha="0.7" android:text="¡Nueva recompensa disponible!" app:layout_constraintStart_toStartOf="@id/tvTituloJuego" app:layout_constraintTop_toBottomOf="@id/tvTituloJuego" />
-                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/chevron_right_24px" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" />
+                    <ImageView
+                        android:id="@+id/ivGameIcon"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:padding="12dp"
+                        android:src="@drawable/videogame_asset_24px"
+                        app:tint="?attr/colorPrimary"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                    <TextView
+                        android:id="@+id/tvTituloJuego"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Mini-Juego"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/ivGameIcon"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/tvResumenPuntos"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:text="Test"
+                        app:layout_constraintStart_toStartOf="@id/tvTituloJuego" app:layout_constraintTop_toBottomOf="@id/tvTituloJuego" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/chevron_right_24px"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 

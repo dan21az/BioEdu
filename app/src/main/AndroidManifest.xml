@@ -18,10 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:hardwareAccelerated="true"
-        android:theme="@style/Theme.MyApplication">
+        android:theme="@style/Base.Theme.MyApplication">
 
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.App.Starting"
             android:exported="true">
 
             <intent-filter>

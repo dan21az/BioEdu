@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.room.compiler)
+    implementation(libs.androidx.core.splashscreen)
     "modernImplementation"(libs.activity)
     "legacyImplementation"("androidx.activity:activity:1.11.0")
     coreLibraryDesugaring(libs.desugar.jdk.libs)

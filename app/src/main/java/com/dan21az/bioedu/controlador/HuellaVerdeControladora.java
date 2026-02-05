@@ -109,9 +109,6 @@ public class HuellaVerdeControladora {
 
         int puntosTotales = stats.vTransporte + stats.vImpresiones + stats.vEnvases + stats.vReciclaje;
 
-        // Guardamos en cache de paso
-        MenuDatos.guardarPuntosCache(ctx, puntosTotales);
-
         int dia = Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
         EcoTip tipInicial = LISTA_TIPS[dia % LISTA_TIPS.length];
 
@@ -139,11 +136,13 @@ public class HuellaVerdeControladora {
     }
 
     public void guardarAccionesActuales(Context ctx, String fecha, ArrayList<String> acciones) {
-        // 1. Guardar solo los datos
+        // Guardar solo los datos
         HuellaVerdeDatos.getInstance(ctx).guardarAcciones(fecha, acciones, ctx);
+        ResumenGeneral resumen = obtenerResumenCompleto(ctx);
 
-        // 2. ELIMINAR la llamada a obtenerResumenCompleto(ctx) aquí.
-        // Deja que la Vista decida cuándo recargar para evitar doble procesamiento.
+        // Aseguras que el caché esté actualizado
+        MenuDatos.guardarPuntosCache(ctx, resumen.getPuntosTotales());
+
     }
 
 
@@ -164,10 +163,11 @@ public class HuellaVerdeControladora {
 
     public static class ResumenGeneral {
         public final List<AccionResumen> acciones;
+
         public final int puntosTotales;
         public final String mensajeGlobal;
         public final ResumenHistorico historico;
-        public final EcoTip tipDelDia; // <--- El consejo ahora viaja aquí
+        public final EcoTip tipDelDia;
         public final int maxPuntos = MAX_PUNTOS_POSIBLES;
 
         public ResumenGeneral(List<AccionResumen> acciones, int puntosTotales,
@@ -177,6 +177,10 @@ public class HuellaVerdeControladora {
             this.mensajeGlobal = mensajeGlobal;
             this.historico = historico;
             this.tipDelDia = tip;
+        }
+
+        public int getPuntosTotales() {
+            return puntosTotales;
         }
     }
 

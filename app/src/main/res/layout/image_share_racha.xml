@@ -44,7 +44,8 @@
             android:id="@+id/tvShareDias"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="15"
+            android:text=""
+            tools:text="15"
             android:textColor="@android:color/white"
             android:textSize="80sp"
             android:textStyle="bold" />
@@ -75,10 +76,9 @@
                 android:textSize="24sp" />
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="8dp"
-                android:src="@mipmap/ic_launcher_foreground"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_launcher_monochrome"
                 app:tint="@android:color/white" />
         </LinearLayout>
     </LinearLayout>
