@@ -135,12 +135,12 @@ public class AjustesActivity extends AppCompatActivity {
         // --- Sección de enlaces ---
 
         // Enlace de Atribución de Iconografía
-        String flaticonUrl = "https://www.flaticon.es/autores/ra-ic0n21/detailed-outline?author_id=3187&type=standard";
-        String nounUrl = "https://thenounproject.com/creator/yoganagbali/";
+        String flaticonUrl = "https://www.flaticon.es/iconos-gratis/ecologia";
+        String nounUrl = "https://thenounproject.com/browse/collection-icon/ecology-and-nature-2-247239/";
         message.append("<b>🖼️ Atribución de Iconografía:</b><br>");
         message.append("Icono principal cortesía de <a href=\"")
                 .append(flaticonUrl)
-                .append("\">RA_IC0N21</a> (Flaticon).<br><br>");
+                .append("\">Futuer</a> (Flaticon).<br><br>");
         message.append("Icono de Huella Verde cortesía de <a href=\"")
                 .append(nounUrl)
                 .append("\">Gung Yoga</a> (The Noun Proyect).<br><br>");
