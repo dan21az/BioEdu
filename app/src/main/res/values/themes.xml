@@ -1,33 +1,10 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base bioedu theme. -->
-    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+    <style name="Base.Theme.MyApplication" parent="Theme.Material3.Light.NoActionBar">
+
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowAnimationStyle">@style/AnimacionPersonalizada</item>
-
-    </style>
-
-    <style name="DialogSinCorte" parent="Theme.Material3.DynamicColors.DayNight">
-        <item name="android:paddingTop">0dp</item>
-        <item name="android:paddingBottom">0dp</item>
-        <item name="android:windowMinWidthMajor">90%</item>
-    </style>
-
-    <style name="AnimacionPersonalizada" parent="@android:style/Animation.Activity">
-
-        <item name="android:activityCloseExitAnimation">@android:anim/slide_out_right</item>
-        <item name="android:activityCloseEnterAnimation">@null</item>
-    </style>
-
-    <style name="Verde.Theme.MyApplication" parent="Base.Theme.MyApplication">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowLightStatusBar">true</item>
 
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
@@ -75,6 +52,73 @@
         <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
+    </style>
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen.IconBackground">
+        <item name="windowSplashScreenBackground">@color/md_theme_surface</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.MyApplication</item>
+    </style>
+
+    <style name="AnimacionPersonalizada" parent="@android:style/Animation.Activity">
+
+        <item name="android:activityCloseExitAnimation">@android:anim/slide_out_right</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+    </style>
+
+    <style name="Verde.Theme.MyApplication" parent="Base.Theme.MyApplication">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <item name="colorPrimary">@color/md_theme_verde_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_verde_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_verde_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_verde_onPrimaryContainer</item>
+        <item name="colorSecondary">@color/md_theme_verde_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_verde_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_verde_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_verde_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_verde_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_verde_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_verde_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_verde_onTertiaryContainer</item>
+        <item name="colorError">@color/md_theme_verde_error</item>
+        <item name="colorOnError">@color/md_theme_verde_onError</item>
+        <item name="colorErrorContainer">@color/md_theme_verde_errorContainer</item>
+        <item name="colorOnErrorContainer">@color/md_theme_verde_onErrorContainer</item>
+        <item name="android:colorBackground">@color/md_theme_verde_background</item>
+        <item name="colorOnBackground">@color/md_theme_verde_onBackground</item>
+        <item name="colorSurface">@color/md_theme_verde_surface</item>
+        <item name="colorOnSurface">@color/md_theme_verde_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_verde_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_verde_onSurfaceVariant</item>
+        <item name="colorOutline">@color/md_theme_verde_outline</item>
+        <item name="colorOutlineVariant">@color/md_theme_verde_outlineVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_verde_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_verde_inverseOnSurface</item>
+        <item name="colorPrimaryInverse">@color/md_theme_verde_inversePrimary</item>
+        <item name="colorPrimaryFixed">@color/md_theme_verde_primaryFixed</item>
+        <item name="colorOnPrimaryFixed">@color/md_theme_verde_onPrimaryFixed</item>
+        <item name="colorPrimaryFixedDim">@color/md_theme_verde_primaryFixedDim</item>
+        <item name="colorOnPrimaryFixedVariant">@color/md_theme_verde_onPrimaryFixedVariant</item>
+        <item name="colorSecondaryFixed">@color/md_theme_verde_secondaryFixed</item>
+        <item name="colorOnSecondaryFixed">@color/md_theme_verde_onSecondaryFixed</item>
+        <item name="colorSecondaryFixedDim">@color/md_theme_verde_secondaryFixedDim</item>
+        <item name="colorOnSecondaryFixedVariant">@color/md_theme_verde_onSecondaryFixedVariant</item>
+        <item name="colorTertiaryFixed">@color/md_theme_verde_tertiaryFixed</item>
+        <item name="colorOnTertiaryFixed">@color/md_theme_verde_onTertiaryFixed</item>
+        <item name="colorTertiaryFixedDim">@color/md_theme_verde_tertiaryFixedDim</item>
+        <item name="colorOnTertiaryFixedVariant">@color/md_theme_verde_onTertiaryFixedVariant</item>
+        <item name="colorSurfaceDim">@color/md_theme_verde_surfaceDim</item>
+        <item name="colorSurfaceBright">@color/md_theme_verde_surfaceBright</item>
+        <item name="colorSurfaceContainerLowest">@color/md_theme_verde_surfaceContainerLowest</item>
+        <item name="colorSurfaceContainerLow">@color/md_theme_verde_surfaceContainerLow</item>
+        <item name="colorSurfaceContainer">@color/md_theme_verde_surfaceContainer</item>
+        <item name="colorSurfaceContainerHigh">@color/md_theme_verde_surfaceContainerHigh</item>
+        <item name="colorSurfaceContainerHighest">@color/md_theme_verde_surfaceContainerHighest</item>
 
     </style>
 
@@ -130,9 +174,5 @@
         <item name="colorSurfaceContainer">@color/md_theme_azul_surfaceContainer</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_azul_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_azul_surfaceContainerHighest</item>
-
     </style>
-
-
-    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
 </resources>
